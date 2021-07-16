@@ -6,19 +6,19 @@ using UnityEngine;
 
 namespace ZPostHDRP
 {
-    public class XPostProcessingUtility
+    public class ZPostProcessingUtility
     {
 
         #region Instance
 
-        private static XPostProcessingUtility _instance;
-        public static XPostProcessingUtility Instance
+        private static ZPostProcessingUtility _instance;
+        public static ZPostProcessingUtility Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new XPostProcessingUtility();
+                    _instance = new ZPostProcessingUtility();
                 }
                 return _instance;
             }

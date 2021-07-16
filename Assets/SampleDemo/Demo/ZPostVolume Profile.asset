@@ -72,6 +72,61 @@ MonoBehaviour:
   - {fileID: -8276451275742595784}
   - {fileID: 66886807295004123}
   - {fileID: 645487551182372685}
+  - {fileID: 8205835862384876047}
+  - {fileID: 1235067348950904}
+--- !u!114 &1235067348950904
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a542d68104dc2c4e9c3f5692ca76fc7, type: 3}
+  m_Name: GlitchDigitalStripe
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0.25
+    min: 0
+    max: 1
+  frequncy:
+    m_OverrideState: 0
+    m_Value: 3
+    min: 1
+    max: 10
+  stripeLength:
+    m_OverrideState: 0
+    m_Value: 0.89
+    min: 0
+    max: 0.99
+  noiseTextureWidth:
+    m_OverrideState: 0
+    m_Value: 20
+    min: 8
+    max: 256
+  noiseTextureHeight:
+    m_OverrideState: 0
+    m_Value: 20
+    min: 8
+    max: 256
+  needStripColorAdjust:
+    m_OverrideState: 0
+    m_Value: 0
+  StripColorAdjustColor:
+    m_OverrideState: 0
+    m_Value: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  StripColorAdjustIndensity:
+    m_OverrideState: 0
+    m_Value: 2
+    min: 0
+    max: 10
 --- !u!114 &66886807295004123
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -363,6 +418,29 @@ MonoBehaviour:
     m_Value: 1
     min: 0
     max: 1
+--- !u!114 &8205835862384876047
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
+  m_Name: VisualEnvironment
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  skyType:
+    m_OverrideState: 0
+    m_Value: 0
+  skyAmbientMode:
+    m_OverrideState: 0
+    m_Value: 0
+  fogType:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &8962001759027917064
 MonoBehaviour:
   m_ObjectHideFlags: 3
