@@ -5,7 +5,7 @@ using System;
 
 namespace ZPostHDRP
 {
-[Serializable, VolumeComponentMenu("ZFullscreenPost/Glitch/GlitchImageBlockV2")]
+[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Glitch/GlitchImageBlockV2")]
 public sealed class GlitchImageBlockV2 : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
@@ -54,14 +54,6 @@ public sealed class GlitchImageBlockV2 : CustomPostProcessVolumeComponent, IPost
         //using _Parmas and _Parmas2 to combine Parameters
         m_Material.SetVector("_Params", new Vector3(TimeX * Speed.value, Amount.value, Fade.value));
         m_Material.SetVector("_Params2", new Vector4(BlockLayer1_U.value, BlockLayer1_V.value, BlockLayer1_Indensity.value, RGBSplitIndensity.value));
-
-        // m_Material.SetFloat("_TimeX", TimeX * Speed.value);
-        // m_Material.SetFloat("_Offset", Amount.value);
-        // m_Material.SetFloat("_Fade", Fade.value);
-        // m_Material.SetFloat("_BlockLayer1_U", BlockLayer1_U.value);
-        // m_Material.SetFloat("_BlockLayer1_V", BlockLayer1_V.value);
-        // m_Material.SetFloat("_BlockLayer1_Indensity", BlockLayer1_Indensity.value);
-        // m_Material.SetFloat("_RGBSplit_Indensity", RGBSplitIndensity.value);
 
         if(BlockVisualizeDebug.value)
         {
