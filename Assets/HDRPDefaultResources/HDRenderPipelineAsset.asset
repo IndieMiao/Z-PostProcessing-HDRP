@@ -456,6 +456,8 @@ MonoBehaviour:
     PublicKeyToken=null
   - ZPostHDRP.GlitchDigitalStripe, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
+  - ZPostHDRP.TextureEffects, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
   virtualTexturingSettings:
     streamingCpuCacheSizeInMegaBytes: 256
     streamingGpuCacheSettings:

@@ -13,7 +13,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
 
     public ClampedFloatParameter effectIntensity = new ClampedFloatParameter (0.25f,0,1);
 
-    public ClampedIntParameter frequncy = new ClampedIntParameter (3 , 1, 10);
+    public ClampedIntParameter frequency = new ClampedIntParameter (3 , 1, 10);
 
     public ClampedFloatParameter stripeLength = new ClampedFloatParameter ( 0.89f, 0f, 0.99f);
 
@@ -88,7 +88,8 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
     }
     static class ShaderIDs
     {
-        internal static readonly int effectIntensity = Shader.PropertyToID("_Indensity");
+        internal static readonly int indensity = Shader.PropertyToID("_Indensity");
+        internal static readonly int effectIntensity = Shader.PropertyToID("_EffectsIntensity");
         internal static readonly int noiseTex = Shader.PropertyToID("_NoiseTex");
         internal static readonly int StripColorAdjustColor = Shader.PropertyToID("_StripColorAdjustColor");
         internal static readonly int StripColorAdjustIndensity = Shader.PropertyToID("_StripColorAdjustIndensity");
@@ -98,7 +99,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
         if (m_Material == null)
             return;
 
-        UpdateNoiseTexture(frequncy.value, noiseTextureWidth.value,noiseTextureHeight.value, stripeLength.value);
+        UpdateNoiseTexture(frequency.value, noiseTextureWidth.value,noiseTextureHeight.value, stripeLength.value);
 
         m_Material.SetFloat(ShaderIDs.effectIntensity, effectIntensity.value);
 
