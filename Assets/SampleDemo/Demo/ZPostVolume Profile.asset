@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
   m_Name: GlitchLineBlock
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
@@ -55,26 +55,29 @@ MonoBehaviour:
     m_Value: 1
     min: 0
     max: 1
---- !u!114 &11400000
+--- !u!114 &-4436446578463864596
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: ZPostVolume Profile
+  m_Script: {fileID: 11500000, guid: b6d7757cc6e88c341ae1ae231b0a1acf, type: 3}
+  m_Name: TextureEffects
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 2010063730081871898}
-  - {fileID: -8276451275742595784}
-  - {fileID: 66886807295004123}
-  - {fileID: 645487551182372685}
-  - {fileID: 8205835862384876047}
-  - {fileID: 1235067348950904}
---- !u!114 &1235067348950904
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  testTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+--- !u!114 &-4193344897098367845
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,11 +89,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a542d68104dc2c4e9c3f5692ca76fc7, type: 3}
   m_Name: GlitchDigitalStripe
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0.25
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  effectIntensity:
+    m_OverrideState: 1
+    m_Value: 0.497
     min: 0
     max: 1
   frequncy:
@@ -122,11 +130,36 @@ MonoBehaviour:
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
+  tempTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 304987f9860c5544fb6fd361fd00d0c8, type: 3}
   StripColorAdjustIndensity:
     m_OverrideState: 0
     m_Value: 2
     min: 0
     max: 10
+  DebugNoise:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: ZPostVolume Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 2010063730081871898}
+  - {fileID: -8276451275742595784}
+  - {fileID: 66886807295004123}
+  - {fileID: 645487551182372685}
+  - {fileID: -4193344897098367845}
+  - {fileID: -4436446578463864596}
 --- !u!114 &66886807295004123
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -139,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b596aaec79bb344bb35f450ff805ac, type: 3}
   m_Name: GlitchLineJitter
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
@@ -174,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbd1b88c2642184386a7b13eb4b8abb, type: 3}
   m_Name: GlitchAnalogNoise
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
@@ -263,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a668ef4a547654d96f4b4819ba0601, type: 3}
   m_Name: GlitchImageBlockV2
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
@@ -418,29 +451,6 @@ MonoBehaviour:
     m_Value: 1
     min: 0
     max: 1
---- !u!114 &8205835862384876047
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
-  m_Name: VisualEnvironment
-  m_EditorClassIdentifier: 
-  active: 0
-  m_AdvancedMode: 0
-  skyType:
-    m_OverrideState: 0
-    m_Value: 0
-  skyAmbientMode:
-    m_OverrideState: 0
-    m_Value: 0
-  fogType:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!114 &8962001759027917064
 MonoBehaviour:
   m_ObjectHideFlags: 3

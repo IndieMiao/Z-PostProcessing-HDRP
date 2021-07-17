@@ -82,15 +82,15 @@ namespace ZPostHDRP
         }
 
 
-        static string TypePreFix = "XPostProcessing.";
+        // static string TypePreFix = "ZPostProcessing.";
 
 
-        public static System.Type GetSettingByName(string typeFullName)
-        {
-            var type = System.Type.GetType(TypePreFix + typeFullName);
-            //Debug.Log("Utllity Type : " + type);
-            return type;
-        }
+        // public static System.Type GetSettingByName(string typeFullName)
+        // {
+        //     var type = System.Type.GetType(TypePreFix + typeFullName);
+        //     //Debug.Log("Utllity Type : " + type);
+        //     return type;
+        // }
 
 
 

@@ -11,8 +11,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
     [Tooltip("Controls the intensity of the effect.")]
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0.25f, 0f, 1f);
 
-    // [Range(0.0f, 1.0f)]
-    // public FloatParameter intensity = new FloatParameter { value = 0.25f };
+    public ClampedFloatParameter effectIntensity = new ClampedFloatParameter (0.25f,0,1);
 
     public ClampedIntParameter frequncy = new ClampedIntParameter (3 , 1, 10);
 
@@ -28,6 +27,8 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
     public ColorParameter StripColorAdjustColor = new ColorParameter ( new  Color(0.1f, 0.1f, 0.1f) );
 
     public ClampedFloatParameter StripColorAdjustIndensity = new ClampedFloatParameter (2f, 0, 10);
+
+    public BoolParameter DebugNoise = new BoolParameter (false);
 
     Texture2D _noiseTexture;
     RenderTexture _trashFrame1;
@@ -87,7 +88,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
     }
     static class ShaderIDs
     {
-        internal static readonly int indensity = Shader.PropertyToID("_Indensity");
+        internal static readonly int effectIntensity = Shader.PropertyToID("_Indensity");
         internal static readonly int noiseTex = Shader.PropertyToID("_NoiseTex");
         internal static readonly int StripColorAdjustColor = Shader.PropertyToID("_StripColorAdjustColor");
         internal static readonly int StripColorAdjustIndensity = Shader.PropertyToID("_StripColorAdjustIndensity");
@@ -99,12 +100,13 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
 
         UpdateNoiseTexture(frequncy.value, noiseTextureWidth.value,noiseTextureHeight.value, stripeLength.value);
 
-        m_Material.SetFloat(ShaderIDs.indensity, intensity.value);
+        m_Material.SetFloat(ShaderIDs.effectIntensity, effectIntensity.value);
 
         if (_noiseTexture != null)
         {
             m_Material.SetTexture(ShaderIDs.noiseTex, _noiseTexture);
         }
+        
 
         if (needStripColorAdjust.value == true)
         {
@@ -117,9 +119,13 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
             m_Material.DisableKeyword("NEED_TRASH_FRAME");
         }
 
-        m_Material.SetFloat("_Intensity", intensity.value);
+        // m_Material.SetFloat("_Intensity", effectIntensity.value);
         m_Material.SetTexture("_InputTexture", source);
-        HDUtils.DrawFullScreen(cmd, m_Material, destination);
+
+        if(DebugNoise.value)
+        { HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1); }
+        else
+        { HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 0); }
     }
 
     public override void Cleanup()
