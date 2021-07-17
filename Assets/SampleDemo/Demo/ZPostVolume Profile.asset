@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8276451275742595784
+--- !u!114 &-6825565338184546793
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,63 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 0
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 1
-    min: 0
-    max: 1
-  blockDirection:
-    m_OverrideState: 1
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 1
-    m_Value: 2
-  frequency:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 25
-  Amount:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
-    m_OverrideState: 0
-    m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
---- !u!114 &-4436446578463864596
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d7757cc6e88c341ae1ae231b0a1acf, type: 3}
-  m_Name: TextureEffects
+  m_Script: {fileID: 11500000, guid: 7d3e7086753280143afb9a33b3a434da, type: 3}
+  m_Name: GlitchRGBSplit
   m_EditorClassIdentifier: 
   active: 1
   m_AdvancedMode: 0
@@ -74,10 +19,112 @@ MonoBehaviour:
     m_Value: 0
     min: 0
     max: 1
-  testTexture:
+  SplitDirection:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
---- !u!114 &-4193344897098367845
+    m_Value: 0
+  Fading:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+  Amount:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  Speed:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 10
+  CenterFading:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+  AmountR:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  AmountB:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+--- !u!114 &-6720720989690161806
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f867b056fa42771469b9db473b0a102c, type: 3}
+  m_Name: GlitchImageBlock
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.114
+    min: 0
+    max: 1
+  Fade:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  Amount:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+  BlockLayer1_U:
+    m_OverrideState: 0
+    m_Value: 9
+    min: 0
+    max: 50
+  BlockLayer1_V:
+    m_OverrideState: 0
+    m_Value: 9
+    min: 0
+    max: 50
+  BlockLayer2_U:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 50
+  BlockLayer2_V:
+    m_OverrideState: 0
+    m_Value: 5
+    min: 0
+    max: 50
+  BlockLayer1_Indensity:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 0
+    max: 50
+  BlockLayer2_Indensity:
+    m_OverrideState: 0
+    m_Value: 4
+    min: 0
+    max: 50
+  RGBSplitIndensity:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 50
+  BlockVisualizeDebug:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-3899042364426097557
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,15 +140,15 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
     min: 0
     max: 1
   effectIntensity:
-    m_OverrideState: 1
-    m_Value: 0.497
+    m_OverrideState: 0
+    m_Value: 0.25
     min: 0
     max: 1
-  frequncy:
+  frequency:
     m_OverrideState: 0
     m_Value: 3
     min: 1
@@ -130,17 +177,69 @@ MonoBehaviour:
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
-  tempTexture:
-    m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 304987f9860c5544fb6fd361fd00d0c8, type: 3}
   StripColorAdjustIndensity:
     m_OverrideState: 0
     m_Value: 2
     min: 0
     max: 10
   DebugNoise:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-3657671964346321770
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
+  m_Name: GlitchLineBlock
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.141
+    min: 0
+    max: 1
+  blockDirection:
+    m_OverrideState: 0
+    m_Value: 0
+  intervalType:
+    m_OverrideState: 0
+    m_Value: 2
+  frequency:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 25
+  Amount:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  LinesWidth:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0.1
+    max: 10
+  Speed:
+    m_OverrideState: 0
+    m_Value: 0.8
+    min: 0
+    max: 1
+  Offset:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 13
+  Alpha:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,13 +253,45 @@ MonoBehaviour:
   m_Name: ZPostVolume Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 2010063730081871898}
-  - {fileID: -8276451275742595784}
-  - {fileID: 66886807295004123}
-  - {fileID: 645487551182372685}
-  - {fileID: -4193344897098367845}
-  - {fileID: -4436446578463864596}
---- !u!114 &66886807295004123
+  - {fileID: 7406801859604747359}
+  - {fileID: -3899042364426097557}
+  - {fileID: -6720720989690161806}
+  - {fileID: 3798448895490451478}
+  - {fileID: -3657671964346321770}
+  - {fileID: 1157019157210948051}
+  - {fileID: 453777091253482021}
+  - {fileID: 3420567060118815976}
+  - {fileID: -6825565338184546793}
+--- !u!114 &453777091253482021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b70be90cc4f03e4c96b01df1d208614, type: 3}
+  m_Name: GlitchImageBlockV3
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 1
+    m_Value: 8
+    min: 0
+    max: 50
+  BlockSize:
+    m_OverrideState: 1
+    m_Value: 5
+    min: 0
+    max: 50
+--- !u!114 &1157019157210948051
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,26 +307,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.131
     min: 0
     max: 1
   JitterDirection:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   intervalType:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   frequency:
-    m_OverrideState: 1
-    m_Value: 11.5
+    m_OverrideState: 0
+    m_Value: 1
     min: 0
     max: 25
   JitterIndensity:
-    m_OverrideState: 1
-    m_Value: 0.472
+    m_OverrideState: 0
+    m_Value: 0.1
     min: 0
     max: 1
---- !u!114 &645487551182372685
+--- !u!114 &3420567060118815976
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,87 +335,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cbd1b88c2642184386a7b13eb4b8abb, type: 3}
-  m_Name: GlitchAnalogNoise
+  m_Script: {fileID: 11500000, guid: ba8a86800240b0f47ab9eccc4b9ed376, type: 3}
+  m_Name: GlitchImageBlockV4
   m_EditorClassIdentifier: 
   active: 0
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.893
+    m_Value: 0.277
     min: 0
     max: 1
-  NoiseSpeed:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  NoiseFading:
+  Speed:
     m_OverrideState: 1
-    m_Value: 0.23
+    m_Value: 9.6
     min: 0
-    max: 1
-  LuminanceJitterThreshold:
+    max: 50
+  BlockSize:
     m_OverrideState: 0
-    m_Value: 0.8
+    m_Value: 8
     min: 0
-    max: 1
---- !u!114 &1042238022194466471
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 1
-  blockDirection:
-    m_OverrideState: 0
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 0
-    m_Value: 2
-  frequency:
+    max: 50
+  MaxRGBSplitX:
     m_OverrideState: 0
     m_Value: 1
     min: 0
     max: 25
-  Amount:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
-    m_OverrideState: 0
-    m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
+  MaxRGBSplitY:
     m_OverrideState: 0
     m_Value: 1
     min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
---- !u!114 &2010063730081871898
+    max: 25
+--- !u!114 &3798448895490451478
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,264 +381,78 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.217
     min: 0
     max: 1
   Fade:
-    m_OverrideState: 1
-    m_Value: 0.325
+    m_OverrideState: 0
+    m_Value: 1
     min: 0
     max: 1
   Speed:
-    m_OverrideState: 1
-    m_Value: 0.504
+    m_OverrideState: 0
+    m_Value: 0.5
     min: 0
     max: 1
   Amount:
-    m_OverrideState: 1
-    m_Value: 0.81
+    m_OverrideState: 0
+    m_Value: 1
     min: 0
     max: 10
   BlockLayer1_U:
-    m_OverrideState: 1
-    m_Value: 4.9
+    m_OverrideState: 0
+    m_Value: 2
     min: 0
     max: 50
   BlockLayer1_V:
-    m_OverrideState: 1
-    m_Value: 8.2
+    m_OverrideState: 0
+    m_Value: 16
     min: 0
     max: 50
   BlockLayer1_Indensity:
-    m_OverrideState: 1
-    m_Value: 13.1
+    m_OverrideState: 0
+    m_Value: 8
     min: 0
     max: 50
   RGBSplitIndensity:
-    m_OverrideState: 1
-    m_Value: 3.8
+    m_OverrideState: 0
+    m_Value: 2
     min: 0
     max: 50
   BlockVisualizeDebug:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &7406801859604747359
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbd1b88c2642184386a7b13eb4b8abb, type: 3}
+  m_Name: GlitchAnalogNoise
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
     m_OverrideState: 1
-    m_Value: 0
---- !u!114 &5234304451773974171
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.212
     min: 0
     max: 1
-  blockDirection:
-    m_OverrideState: 0
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 0
-    m_Value: 2
-  frequency:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 25
-  Amount:
+  NoiseSpeed:
     m_OverrideState: 0
     m_Value: 0.5
     min: 0
     max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
-    m_OverrideState: 0
-    m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
---- !u!114 &5799535934806277648
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 1
-  blockDirection:
-    m_OverrideState: 0
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 0
-    m_Value: 2
-  frequency:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 25
-  Amount:
+  NoiseFading:
     m_OverrideState: 0
     m_Value: 0.5
     min: 0
     max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
+  LuminanceJitterThreshold:
     m_OverrideState: 0
     m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
---- !u!114 &8962001759027917064
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 1
-  blockDirection:
-    m_OverrideState: 0
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 0
-    m_Value: 2
-  frequency:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 25
-  Amount:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
-    m_OverrideState: 0
-    m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
---- !u!114 &9114213859707703368
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
-  m_Name: GlitchLineBlock
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  intensity:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 1
-  blockDirection:
-    m_OverrideState: 0
-    m_Value: 0
-  intervalType:
-    m_OverrideState: 0
-    m_Value: 2
-  frequency:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 25
-  Amount:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  LinesWidth:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0.1
-    max: 10
-  Speed:
-    m_OverrideState: 0
-    m_Value: 0.8
-    min: 0
-    max: 1
-  Offset:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 13
-  Alpha:
-    m_OverrideState: 0
-    m_Value: 1
     min: 0
     max: 1

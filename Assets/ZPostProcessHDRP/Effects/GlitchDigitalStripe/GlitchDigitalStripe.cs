@@ -9,7 +9,7 @@ namespace ZPostHDRP
 public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
-    public ClampedFloatParameter intensity = new ClampedFloatParameter(0.25f, 0f, 1f);
+    public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
 
     public ClampedFloatParameter effectIntensity = new ClampedFloatParameter (0.25f,0,1);
 
