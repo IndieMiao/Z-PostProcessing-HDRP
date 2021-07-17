@@ -45,7 +45,6 @@ Shader "Hidden/Shader/GlitchRGBSplit"
 		return half4(finalColor, 1.0);
 
 	}
-
 	half4 Frag_Vertical(Varyings i) : SV_Target
 	{
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
