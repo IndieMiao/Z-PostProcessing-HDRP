@@ -37,7 +37,7 @@ Shader "Hidden/Shader/GlitchDigitalStripe"
     // List of properties to control your post process effect
     float _Intensity;
     TEXTURE2D_X(_InputTexture);
-	TEXTURE2D(_NoiseTex);
+	sampler2D _NoiseTex;
 
 	uniform half _EffectsIntensity;
 	uniform half4 _StripColorAdjustColor;
@@ -47,7 +47,7 @@ Shader "Hidden/Shader/GlitchDigitalStripe"
 	half4 Frag(Varyings i): SV_Target
 	{
 		// 基础数据准备
-		 half4 stripNoise = LOAD_TEXTURE2D_X(_NoiseTex,  i.texcoord*_ScreenSize.xy);
+		 half4 stripNoise = tex2D(_NoiseTex,  i.texcoord);
 		 half threshold = 1.001 - _EffectsIntensity * 1.001;
 
 		// uv偏移
@@ -69,7 +69,7 @@ Shader "Hidden/Shader/GlitchDigitalStripe"
 	{
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 		// 基础数据准备
-		 half4 stripNoise = LOAD_TEXTURE2D_X(_NoiseTex,  i.texcoord.xy * _ScreenSize.xy );
+		 half4 stripNoise = tex2D(_NoiseTex,  i.texcoord.xy);
 		return float4(stripNoise.xyz, 1);
 	}
 	
