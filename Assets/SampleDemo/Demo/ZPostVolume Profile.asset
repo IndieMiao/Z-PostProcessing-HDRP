@@ -207,6 +207,36 @@ MonoBehaviour:
   - {fileID: 3798448895490451478}
   - {fileID: -3657671964346321770}
   - {fileID: 1157019157210948051}
+  - {fileID: 453777091253482021}
+--- !u!114 &453777091253482021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b70be90cc4f03e4c96b01df1d208614, type: 3}
+  m_Name: GlitchImageBlockV3
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 0
+    m_Value: 10
+    min: 0
+    max: 50
+  BlockSize:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 0
+    max: 50
 --- !u!114 &1157019157210948051
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -55,9 +55,9 @@ Shader "Hidden/Shader/GlitchImageBlock"
 		float RGBSplitNoise = pow(randomNoise(5.1379), 7.1) * _RGBSplit_Indensity;
 		float lineNoise = lineNoise1 * lineNoise2 * _Offset  - RGBSplitNoise;
 		
-		float4 colorR = LOAD_TEXTURE2D_X(_InputTexture,  uv* _ScreenSize.xy);
-		float4 colorG = LOAD_TEXTURE2D_X(_InputTexture,  uv + float2(lineNoise * 0.05 * randomNoise(7.0), 0)* _ScreenSize.xy);
-		float4 colorB = LOAD_TEXTURE2D_X(_InputTexture,  uv - float2(lineNoise * 0.05 * randomNoise(23.0), 0)* _ScreenSize.xy);
+		float4 colorR = LOAD_TEXTURE2D_X(_InputTexture,  uv * _ScreenSize.xy);
+		float4 colorG = LOAD_TEXTURE2D_X(_InputTexture,  (uv + float2(lineNoise * 0.05 * randomNoise(7.0), 0)) * _ScreenSize.xy);
+		float4 colorB = LOAD_TEXTURE2D_X(_InputTexture,  (uv - float2(lineNoise * 0.05 * randomNoise(23.0), 0)) * _ScreenSize.xy);
 		
 		float4 result = float4(float3(colorR.x, colorG.y, colorB.z), colorR.a + colorG.a + colorB.a);
 		result = lerp(colorR, result, _Fade);
