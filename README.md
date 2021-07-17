@@ -8,7 +8,7 @@ https://github.com/QianMo/X-PostProcessing-Library
 
 It is a very cool projcet, but it do not support HDRP
 
-So I am working in process to converting it to HDRP
+So I am working in process to converting it to HDRP and fix some bugs
 
 Feel free to use, and thanks QianMo's cool project.
 
