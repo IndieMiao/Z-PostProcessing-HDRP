@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f867b056fa42771469b9db473b0a102c, type: 3}
   m_Name: GlitchImageBlock
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.114
     min: 0
     max: 1
   Fade:
@@ -84,10 +84,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a542d68104dc2c4e9c3f5692ca76fc7, type: 3}
   m_Name: GlitchDigitalStripe
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
     max: 1
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92714808c6031cd469e50ae154db55f7, type: 3}
   m_Name: GlitchLineBlock
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.141
     min: 0
     max: 1
   blockDirection:
@@ -208,6 +208,7 @@ MonoBehaviour:
   - {fileID: -3657671964346321770}
   - {fileID: 1157019157210948051}
   - {fileID: 453777091253482021}
+  - {fileID: 3420567060118815976}
 --- !u!114 &453777091253482021
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -220,21 +221,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b70be90cc4f03e4c96b01df1d208614, type: 3}
   m_Name: GlitchImageBlockV3
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
     min: 0
     max: 1
   Speed:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 8
     min: 0
     max: 50
   BlockSize:
-    m_OverrideState: 0
-    m_Value: 8
+    m_OverrideState: 1
+    m_Value: 5
     min: 0
     max: 50
 --- !u!114 &1157019157210948051
@@ -249,11 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b596aaec79bb344bb35f450ff805ac, type: 3}
   m_Name: GlitchLineJitter
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.131
     min: 0
     max: 1
   JitterDirection:
@@ -272,6 +273,45 @@ MonoBehaviour:
     m_Value: 0.1
     min: 0
     max: 1
+--- !u!114 &3420567060118815976
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8a86800240b0f47ab9eccc4b9ed376, type: 3}
+  m_Name: GlitchImageBlockV4
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  Speed:
+    m_OverrideState: 0
+    m_Value: 10
+    min: 0
+    max: 50
+  BlockSize:
+    m_OverrideState: 0
+    m_Value: 8
+    min: 0
+    max: 50
+  MaxRGBSplitX:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 25
+  MaxRGBSplitY:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 25
 --- !u!114 &3798448895490451478
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -284,11 +324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a668ef4a547654d96f4b4819ba0601, type: 3}
   m_Name: GlitchImageBlockV2
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.217
     min: 0
     max: 1
   Fade:
@@ -341,11 +381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbd1b88c2642184386a7b13eb4b8abb, type: 3}
   m_Name: GlitchAnalogNoise
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.212
     min: 0
     max: 1
   NoiseSpeed:
