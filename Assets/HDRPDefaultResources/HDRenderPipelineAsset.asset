@@ -466,6 +466,8 @@ MonoBehaviour:
     PublicKeyToken=null
   - ZPostHDRP.GlitchRGBSplit, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
+  - ZPostHDRP.GlitchRGBSplitV2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
   virtualTexturingSettings:
     streamingCpuCacheSizeInMegaBytes: 256
     streamingGpuCacheSettings:
