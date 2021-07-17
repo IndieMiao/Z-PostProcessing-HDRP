@@ -7,4 +7,6 @@ namespace ZPostHDRP
     public sealed class DirectionParameter : VolumeParameter<Direction> { }
     [Serializable]
     public sealed class IntervalTypeParameter : VolumeParameter<IntervalType> { }
+    [Serializable]
+    public sealed class GlitchRGBSplitDirectionParameter : VolumeParameter<DirectionEX> { }
 }
