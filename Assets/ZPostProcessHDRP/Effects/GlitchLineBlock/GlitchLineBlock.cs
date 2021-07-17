@@ -61,6 +61,9 @@ public sealed class GlitchLineBlock : CustomPostProcessVolumeComponent, IPostPro
         {
             TimeX = 0;
         }
+
+        UpdateFrequency(m_Material, intervalType,frameCount,frequency);
+
         m_Material.SetFloat("_Intensity", intensity.value);
         m_Material.SetTexture("_InputTexture", source);
         m_Material.SetVector(ShaderIDs.Params, new Vector3(
@@ -71,20 +74,20 @@ public sealed class GlitchLineBlock : CustomPostProcessVolumeComponent, IPostPro
 
         HDUtils.DrawFullScreen(cmd, m_Material, destination);
     }
-    void UpdateFrequency(Material mat)
+    void UpdateFrequency(Material mat, IntervalTypeParameter iInternalType, int iFramecount, ClampedFloatParameter iFrequency)
     {
-        if (intervalType.value == IntervalType.Random)
+        if (iInternalType.value == IntervalType.Random)
         {
-            if (frameCount > frequency.value)
+            if (iFramecount > iFrequency.value)
             {
 
-                frameCount = 0;
-                randomFrequency = UnityEngine.Random.Range(0, frequency.value);
+                iFramecount = 0;
+                randomFrequency = UnityEngine.Random.Range(0, iFrequency.value);
             }
-            frameCount++;
+            iFramecount++;
         }
 
-        if (intervalType.value == IntervalType.Infinite)
+        if (iInternalType.value == IntervalType.Infinite)
         {
             mat.EnableKeyword("USING_FREQUENCY_INFINITE");
         }
