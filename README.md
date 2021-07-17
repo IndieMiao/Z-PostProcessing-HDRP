@@ -1,13 +1,14 @@
 # ZPostHDRP
 Fulll Screen PostProcess HDRP
-
-unity postprocess  HDRP verison 
 ## Introduction :
 
-This project is based on x-postprocess lib created by QianMo, which is a very cool projcet, but it do not support hdrp
+This project is based on x-postprocess lib created by QianMo
+
 https://github.com/QianMo/X-PostProcessing-Library
 
-I just convert it to support native HDRP
+It is a very cool projcet, but it do not support HDRP
+
+So I am working in process to converting it to HDRP
 
 Feel free to use, and thanks QianMo's cool project.
 
