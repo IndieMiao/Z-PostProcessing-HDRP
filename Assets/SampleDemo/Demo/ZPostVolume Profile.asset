@@ -67,16 +67,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d7757cc6e88c341ae1ae231b0a1acf, type: 3}
   m_Name: TextureEffects
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.619
     min: 0
     max: 1
   testTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 8fe0d8788a2ea0840a318928122fdab8, type: 3}
 --- !u!114 &-4193344897098367845
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -89,53 +89,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a542d68104dc2c4e9c3f5692ca76fc7, type: 3}
   m_Name: GlitchDigitalStripe
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.444
     min: 0
     max: 1
   effectIntensity:
     m_OverrideState: 1
-    m_Value: 0.497
+    m_Value: 0.835
     min: 0
     max: 1
-  frequncy:
+  frequency:
     m_OverrideState: 0
     m_Value: 3
     min: 1
     max: 10
   stripeLength:
-    m_OverrideState: 0
-    m_Value: 0.89
+    m_OverrideState: 1
+    m_Value: 0.916
     min: 0
     max: 0.99
   noiseTextureWidth:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 20
     min: 8
     max: 256
   noiseTextureHeight:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 20
     min: 8
     max: 256
   needStripColorAdjust:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   StripColorAdjustColor:
-    m_OverrideState: 0
-    m_Value: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.4716981, g: 0.06081639, b: 0.06081639, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
-  tempTexture:
-    m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 304987f9860c5544fb6fd361fd00d0c8, type: 3}
   StripColorAdjustIndensity:
-    m_OverrideState: 0
-    m_Value: 2
+    m_OverrideState: 1
+    m_Value: 1.97
     min: 0
     max: 10
   DebugNoise:
