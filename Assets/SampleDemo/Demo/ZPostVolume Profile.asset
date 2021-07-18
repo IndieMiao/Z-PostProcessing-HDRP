@@ -124,6 +124,35 @@ MonoBehaviour:
   BlockVisualizeDebug:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-6146267342209399593
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be961b681f036c84eb01168b4ab4c85e, type: 3}
+  m_Name: GlitchRGBSplitV5
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  Amplitude:
+    m_OverrideState: 0
+    m_Value: 3
+    min: 0
+    max: 5
+  Speed:
+    m_OverrideState: 0
+    m_Value: 0.1
+    min: 0
+    max: 1
 --- !u!114 &-6063268205827321683
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -136,11 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b26859f556543448b8cd056de00b59, type: 3}
   m_Name: GlitchRGBSplitV3
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.4
     min: 0
     max: 1
   SplitDirection:
@@ -280,6 +309,28 @@ MonoBehaviour:
     m_Value: 1
     min: 0
     max: 1
+--- !u!114 &-507953728757205588
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d7757cc6e88c341ae1ae231b0a1acf, type: 3}
+  m_Name: TextureEffects
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.327
+    min: 0
+    max: 1
+  testTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 8fe0d8788a2ea0840a318928122fdab8, type: 3}
 --- !u!114 &-70501403456032867
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -341,6 +392,9 @@ MonoBehaviour:
   - {fileID: -6825565338184546793}
   - {fileID: -70501403456032867}
   - {fileID: -6063268205827321683}
+  - {fileID: 5009780290601211129}
+  - {fileID: -507953728757205588}
+  - {fileID: -6146267342209399593}
 --- !u!114 &453777091253482021
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -501,6 +555,38 @@ MonoBehaviour:
   BlockVisualizeDebug:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &5009780290601211129
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2063dbc2cd362254292256d18003baa9, type: 3}
+  m_Name: GlitchRGBSplitV4
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.118
+    min: 0
+    max: 1
+  effectsIntensity:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: -1
+    max: 1
+  SplitDirection:
+    m_OverrideState: 1
+    m_Value: 0
+  Speed:
+    m_OverrideState: 0
+    m_Value: 10
+    min: 0
+    max: 100
 --- !u!114 &7406801859604747359
 MonoBehaviour:
   m_ObjectHideFlags: 3

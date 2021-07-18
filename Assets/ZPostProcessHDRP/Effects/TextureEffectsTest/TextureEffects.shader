@@ -12,14 +12,16 @@ Shader "Hidden/Shader/TextureEffects"
     // List of properties to control your post process effect
     float _Intensity;
     TEXTURE2D_X(_InputTexture);
-    TEXTURE2D(_TestImage);
+    // TEXTURE2D(_TestImage);
+    sampler2D _TestImage;
 
     float4 CustomPostProcess(Varyings input) : SV_Target
     {
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
 
         uint2 positionSS = input.texcoord * _ScreenSize.xy;
-        float3 outColor = LOAD_TEXTURE2D(_TestImage, positionSS).xyz;
+        // float3 outColor = LOAD_TEXTURE2D(_TestImage, positionSS).xyz;
+        float3 outColor = tex2D(_TestImage, input.texcoord).xyz;
 
         return float4(outColor, 1);
     }
