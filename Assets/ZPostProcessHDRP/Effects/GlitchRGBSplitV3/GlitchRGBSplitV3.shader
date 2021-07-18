@@ -112,7 +112,7 @@ Shader "Hidden/Shader/GlitchRGBSplitV3"
         ZWrite Off ZTest Always Blend Off Cull Off
         Pass
         {
-            Name "GlitchRGBSplitv2_Horizontal"
+            Name "GlitchRGBSplitv3_Horizontal"
             HLSLPROGRAM
                 #pragma fragment Frag_Horizontal
                 #pragma vertex Vert
@@ -120,7 +120,7 @@ Shader "Hidden/Shader/GlitchRGBSplitV3"
         }
         Pass
         {
-            Name "GlitchRGBSplitv2_Vertical"
+            Name "GlitchRGBSplitv3_Vertical"
             HLSLPROGRAM
                 #pragma fragment Frag_Vertical
                 #pragma vertex Vert
@@ -128,7 +128,7 @@ Shader "Hidden/Shader/GlitchRGBSplitV3"
         }
         Pass
         {
-            Name "GlitchRGBSplitv2_Horizontal_Vertical"
+            Name "GlitchRGBSplitv3_Horizontal_Vertical"
             HLSLPROGRAM
                 #pragma fragment Frag_Horizontal_Vertical 
                 #pragma vertex Vert
