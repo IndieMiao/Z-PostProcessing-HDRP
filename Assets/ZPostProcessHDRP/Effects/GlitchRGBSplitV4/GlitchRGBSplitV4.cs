@@ -17,7 +17,7 @@ public sealed class GlitchRGBSplitV4 : CustomPostProcessVolumeComponent, IPostPr
 
     Material m_Material;
     private float randomFrequency;
-    private int frameCount = 0;
+    // private int frameCount = 0;
     private float TimeX = 1.0f;
 
     static class ShaderIDs
