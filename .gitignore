@@ -60,5 +60,3 @@ crashlytics-build.properties
 
 .vscode/settings.json
 UnityPackageManager/manifest.json
-Assets/SandBox.meta
-Assets/SandBox/
