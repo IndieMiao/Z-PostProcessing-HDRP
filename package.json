@@ -1,0 +1,21 @@
+{
+"name": "com.indiemiao.zpostprocesshdrp",
+"version": "1.0.0",
+"displayName": "Z-PostProcess-HDRP",
+"description": "Some full screeen postprocessing effects for HDRP",
+"unity": "2020.3",
+"dependencies": {
+},
+"keywords": [
+	"HDRP",
+	"PostProcessing",
+	"Custom PostProcessing",
+	"Volume",
+	"FullScreen"
+],
+"author": {
+	"name": "Indie Miao",
+	"email": "InideMiao@126.com",
+	"url": ""
+}
+}
