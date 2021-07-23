@@ -29,7 +29,7 @@ Shader "Hidden/Shader/GlitchRGBSplitV3"
 		splitColor.r = (LOAD_TEXTURE2D_X(_InputTexture,  float2(splitAmountX.r, uv.y) * _ScreenSize.xy).rgb).x;
 		splitColor.g = (LOAD_TEXTURE2D_X(_InputTexture,  float2(splitAmountX.g, uv.y) * _ScreenSize.xy).rgb).y;
 		splitColor.b = (LOAD_TEXTURE2D_X(_InputTexture,  float2(splitAmountX.b, uv.y) * _ScreenSize.xy).rgb).z;
-1;
+		splitColor.a = 1;
 		return splitColor;
 	}
 	
