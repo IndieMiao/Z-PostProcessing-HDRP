@@ -5,11 +5,7 @@ Shader "Hidden/Shader/GlitchAnalogNoise"
     #pragma target 4.5
     #pragma only_renderers d3d11 playstation xboxone xboxseries vulkan metal switch
 
-    #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
-    #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-    #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
-    #include "Packages/com.unity.render-pipelines.high-definition/Runtime/PostProcessing/Shaders/FXAA.hlsl"
-    #include "Packages/com.unity.render-pipelines.high-definition/Runtime/PostProcessing/Shaders/RTUpscale.hlsl"
+    #include "../../Shaders/ZCommon.hlsl"
 
     uniform half4 _Params;
 	#define _Speed _Params.x
@@ -20,30 +16,6 @@ Shader "Hidden/Shader/GlitchAnalogNoise"
 
     float _Intensity;
     TEXTURE2D_X(_InputTexture);
-
-    struct Attributes
-    {
-        uint vertexID : SV_VertexID;
-        UNITY_VERTEX_INPUT_INSTANCE_ID
-    };
-
-    struct Varyings
-    {
-        float4 positionCS : SV_POSITION;
-        float2 texcoord   : TEXCOORD0;
-        UNITY_VERTEX_OUTPUT_STEREO
-    };
-
-    Varyings Vert(Attributes input)
-    {
-        Varyings output;
-        UNITY_SETUP_INSTANCE_ID(input);
-        UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
-        output.positionCS = GetFullScreenTriangleVertexPosition(input.vertexID);
-        output.texcoord = GetFullScreenTriangleTexCoord(input.vertexID);
-        return output;
-    }
-;
 
 	float randomNoise(float2 c)
 	{
