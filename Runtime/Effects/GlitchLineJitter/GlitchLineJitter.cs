@@ -11,7 +11,7 @@ public sealed class GlitchLineJitter : CustomPostProcessVolumeComponent, IPostPr
 {
    [Tooltip("Controls the intensity of the effect.")]
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
-    public DirectionParameter JitterDirection = new DirectionParameter { value = Direction.Horizontal };
+    public DirectionParameter direction = new DirectionParameter { value = Direction.Horizontal };
 
     public IntervalTypeParameter intervalType = new IntervalTypeParameter { value = IntervalType.Random };
 
@@ -47,28 +47,23 @@ public sealed class GlitchLineJitter : CustomPostProcessVolumeComponent, IPostPr
 
         float displacement = 0.005f + Mathf.Pow(JitterIndensity.value, 3) * 0.1f;
         float threshold = Mathf.Clamp01(1.0f - JitterIndensity.value * 1.2f);
+
+        FrequencyUtility.UpdateFrequency(m_Material,intervalType, frequency,out randomFrequency);
  
         m_Material.SetFloat("_Intensity", intensity.value);
         m_Material.SetTexture("_InputTexture", source);
         m_Material.SetVector(ShaderIDs.Params, new Vector3(displacement, threshold, intervalType.value == IntervalType.Random ? randomFrequency : frequency.value));
 
-        HDUtils.DrawFullScreen(cmd, m_Material, destination);
-    }
-    void UpdateFrequency(Material mat)
-    {
-        if (intervalType.value == IntervalType.Random)
+        if(direction.value == Direction.Horizontal) 
         {
-            randomFrequency = UnityEngine.Random.Range(0, frequency.value);
-        }
-
-        if (intervalType.value == IntervalType.Infinite)
-        {
-            mat.EnableKeyword("USING_FREQUENCY_INFINITE");
+            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 0);
         }
         else
         {
-            mat.DisableKeyword("USING_FREQUENCY_INFINITE");
+            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1);
         }
+            
+
     }
 
     public override void Cleanup()

@@ -11,7 +11,7 @@ public sealed class GlitchScanLineJitter : CustomPostProcessVolumeComponent, IPo
 {
     [Tooltip("Controls the intensity of the effect.")]
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
-    public DirectionParameter JitterDirection  = new DirectionParameter { value = Direction.Horizontal };
+    public DirectionParameter direction  = new DirectionParameter { value = Direction.Horizontal };
 
     public IntervalTypeParameter intervalType = new IntervalTypeParameter { value = IntervalType.Random };
 
@@ -57,7 +57,14 @@ public sealed class GlitchScanLineJitter : CustomPostProcessVolumeComponent, IPo
         m_Material.SetFloat("_Intensity", intensity.value);
         m_Material.SetTexture("_InputTexture", source);
         m_Material.SetVector(ShaderIDs.Params, new Vector3(displacement, threshold, intervalType.value == IntervalType.Random ? randomFrequency : frequency.value));
-        HDUtils.DrawFullScreen(cmd, m_Material, destination);
+        if(direction.value == Direction.Horizontal)
+        {
+            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 0);
+        }
+        else
+        {
+            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1);
+        }
     }
     public override void Cleanup()
     {

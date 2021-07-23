@@ -49,7 +49,7 @@ public sealed class GlitchRGBSplitV3 : CustomPostProcessVolumeComponent, IPostPr
         m_Material.SetFloat("_Intensity", intensity.value);
         m_Material.SetTexture("_InputTexture", source);
 
-        UpdateFrequency(m_Material, intervalType,frameCount,frequency);
+        FrequencyUtility.UpdateFrequency(m_Material, intervalType,frameCount, frequency, out randomFrequency);
 
         m_Material.SetVector(ShaderIDs.Params, new Vector3(intervalType.value == IntervalType.Random ? randomFrequency : frequency
              .value, Amount.value, Speed.value));
@@ -67,29 +67,6 @@ public sealed class GlitchRGBSplitV3 : CustomPostProcessVolumeComponent, IPostPr
                 break;
         }
     }
-    void UpdateFrequency(Material mat, IntervalTypeParameter iInternalType, int iFramecount, ClampedFloatParameter iFrequency)
-    {
-        if (iInternalType.value == IntervalType.Random)
-        {
-            if (iFramecount > iFrequency.value)
-            {
-
-                iFramecount = 0;
-                randomFrequency = UnityEngine.Random.Range(0, iFrequency.value);
-            }
-            iFramecount++;
-        }
-
-        if (iInternalType.value == IntervalType.Infinite)
-        {
-            mat.EnableKeyword("USING_FREQUENCY_INFINITE");
-        }
-        else
-        {
-            mat.DisableKeyword("USING_FREQUENCY_INFINITE");
-        }
-    } 
-
 
     public override void Cleanup()
     {
