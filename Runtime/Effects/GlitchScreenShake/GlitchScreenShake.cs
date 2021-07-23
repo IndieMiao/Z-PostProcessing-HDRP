@@ -2,12 +2,10 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using System;
-
 namespace ZPostHDRP
 {
-
-[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Glitch/GlitchScreenJump")]
-public sealed class GlitchScreenJump : CustomPostProcessVolumeComponent, IPostProcessComponent
+[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Glitch/GlitchScreenShake")]
+public sealed class GlitchScreenShake : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
@@ -15,26 +13,20 @@ public sealed class GlitchScreenJump : CustomPostProcessVolumeComponent, IPostPr
     public ClampedFloatParameter effectIntensity = new ClampedFloatParameter(0.35f, 0f, 1f);
 
     Material m_Material;
-    float ScreenJumpTime;
 
     public bool IsActive() => m_Material != null && intensity.value > 0f;
 
     // Do not forget to add this post process in the Custom Post Process Orders list (Project Settings > HDRP Default Settings).
     public override CustomPostProcessInjectionPoint injectionPoint => CustomPostProcessInjectionPoint.AfterPostProcess;
 
-    const string kShaderName = "Hidden/Shader/GlitchScreenJump";
-
-    static class ShaderIDs
-    {
-        internal static readonly int Params = Shader.PropertyToID("_Params");
-    }
+    const string kShaderName = "Hidden/Shader/GlitchScreenShake";
 
     public override void Setup()
     {
         if (Shader.Find(kShaderName) != null)
             m_Material = new Material(Shader.Find(kShaderName));
         else
-            Debug.LogError($"Unable to find shader '{kShaderName}'. Post Process Volume GlitchScreenJump is unable to load.");
+            Debug.LogError($"Unable to find shader '{kShaderName}'. Post Process Volume GlitchScreenShake is unable to load.");
     }
 
     public override void Render(CommandBuffer cmd, HDCamera camera, RTHandle source, RTHandle destination)
@@ -42,23 +34,10 @@ public sealed class GlitchScreenJump : CustomPostProcessVolumeComponent, IPostPr
         if (m_Material == null)
             return;
 
-        ScreenJumpTime += Time.deltaTime * effectIntensity.value * 9.8f;
-
-        Vector2 ScreenJumpVector = new Vector2(effectIntensity.value, ScreenJumpTime);
-
-
         m_Material.SetFloat("_Intensity", intensity.value);
         m_Material.SetTexture("_InputTexture", source);
-        m_Material.SetVector(ShaderIDs.Params, ScreenJumpVector);
-
-        if(direction.value == Direction.Horizontal)
-        {
-            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 0);
-        }
-        else{
-
-            HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1);
-        }
+        m_Material.SetFloat("_ScreenShake", effectIntensity.value);
+        HDUtils.DrawFullScreen(cmd, m_Material, destination, null, (int)direction.value);
     }
 
     public override void Cleanup()
@@ -66,5 +45,4 @@ public sealed class GlitchScreenJump : CustomPostProcessVolumeComponent, IPostPr
         CoreUtils.Destroy(m_Material);
     }
 }
-
 }
