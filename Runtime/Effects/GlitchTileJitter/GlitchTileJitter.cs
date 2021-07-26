@@ -17,7 +17,6 @@ public sealed class GlitchTileJitter : CustomPostProcessVolumeComponent, IPostPr
     public DirectionParameter jitterDirection = new DirectionParameter{value = Direction.Horizontal};
     public ClampedFloatParameter frequency = new ClampedFloatParameter(1f,0f,25f) ;
 
-
     public ClampedFloatParameter splittingNumber = new ClampedFloatParameter (5f,0f,50f);
 
     public ClampedFloatParameter amount = new ClampedFloatParameter (10f,0f,100f);
