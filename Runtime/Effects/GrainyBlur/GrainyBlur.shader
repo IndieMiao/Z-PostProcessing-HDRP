@@ -10,6 +10,8 @@ Shader "Hidden/Shader/GrainyBlur"
     // List of properties to control your post process effect
     float _Intensity;
     TEXTURE2D_X(_BlitTexture);
+    TEXTURE2D_X(_InputTexture);
+    TEXTURE2D_X(_BufferRT);
 	half2 _Params;
 
 	#define _BlurRadius _Params.x
@@ -33,7 +35,8 @@ Shader "Hidden/Shader/GrainyBlur"
 			random = frac(43758.5453 * random + 0.61432);
 			randomOffset.y = (random - 0.5) * 2.0;
 			
-			finalColor += LOAD_TEXTURE2D_X(_BlitTexture,  half2(i.texcoord + randomOffset * _BlurRadius) * _ScreenSize.xy);
+			// finalColor += LOAD_TEXTURE2D_X(_BlitTexture,  half2(i.texcoord + randomOffset * _BlurRadius) * _ScreenSize.xy);
+			finalColor += LOAD_TEXTURE2D_X(_BufferRT,  half2(i.texcoord + randomOffset * _BlurRadius) * _ScreenSize.xy);
 		}
 		return finalColor / _Iteration;
 	}

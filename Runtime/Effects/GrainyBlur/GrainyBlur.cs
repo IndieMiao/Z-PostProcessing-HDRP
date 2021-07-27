@@ -47,23 +47,29 @@ public sealed class GrainyBlur : CustomPostProcessVolumeComponent, IPostProcessC
         rt = RTHandles.Alloc(scaleFactor: Vector2.one * (1/RTDownScaling.value), filterMode: FilterMode.Point, wrapMode: TextureWrapMode.Clamp, dimension: TextureDimension.Tex2D);
         m_Material.SetVector(ShaderIDs.Params, new Vector2(BlurRadius.value / camera.screenSize.x, Iteration.value));
         m_Material.SetFloat("_Intensity", intensity.value);
-        m_Material.SetTexture("_BlitTexture", source);
+        // m_Material.SetTexture("_BlitTexture", source);
+
 
         if(RTDownScaling.value >1f)
         {
             var screenSizeRT = camera.screenSize / RTDownScaling.value;
             HDUtils.BlitCameraTexture(cmd, source, rt, m_Material, 0);
+            m_Material.SetTexture(ShaderIDs.BufferRT, rt);
             cmd.Blit(rt, destination, 0, 0);
+            // cmd.Blit(rt, (RenderTargetIdentifier)ShaderIDs.BufferRT, 0, 0);
+            // HDUtils.DrawFullScreen(cmd, m_Material, destination);
         }
         else
         {
+            // HDUtils.DrawFullScreen(cmd, m_Material, (RTHandle)ShaderIDs.BufferRT);
+            m_Material.SetTexture(ShaderIDs.BufferRT, source);
             HDUtils.DrawFullScreen(cmd, m_Material, destination);
         }
     }
 
     public override void Cleanup()
     {
-        // rt.Release();
+        rt.Release();
         CoreUtils.Destroy(m_Material);
     }
 }
