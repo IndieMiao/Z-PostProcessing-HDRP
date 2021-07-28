@@ -7,7 +7,7 @@ namespace ZPostHDRP
 {
 
 
-[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Glitch/GrainyBlur")]
+[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Blur/GrainyBlur")]
 public sealed class GrainyBlur : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
