@@ -12,7 +12,7 @@ public sealed class GlitchRGBSplitV2 : CustomPostProcessVolumeComponent, IPostPr
     public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1f);
     public GlitchRGBSplitDirectionParameter SplitDirection = new GlitchRGBSplitDirectionParameter{ value =  DirectionEX.Horizontal};
     public ClampedFloatParameter Amount = new ClampedFloatParameter( 0.5f, 0f, 1f );
-    public ClampedFloatParameter Amplitude= new ClampedFloatParameter( 3f, 1f,6f);
+    public ClampedFloatParameter Amplitude= new ClampedFloatParameter( 3f, 0f,6f);
     public ClampedFloatParameter Speed = new ClampedFloatParameter( 1f, 0f, 2f );
     Material m_Material;
     private float TimeX = 1.0f;
@@ -54,18 +54,7 @@ public sealed class GlitchRGBSplitV2 : CustomPostProcessVolumeComponent, IPostPr
 
         m_Material.SetVector(ShaderIDs.Params, new Vector3(TimeX * Speed.value, Amount.value, Amplitude.value));
 
-        switch(SplitDirection.value)
-        {
-            case DirectionEX.Horizontal: 
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 0);
-                break;
-            case DirectionEX.Vertical:
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 1);
-                break;
-            case DirectionEX.Horizontal_Vertical:
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 2);
-                break;
-        }
+        HDUtils.DrawFullScreen(cmd, m_Material, destination,null, (int)SplitDirection.value);
     }
 
     public override void Cleanup()
