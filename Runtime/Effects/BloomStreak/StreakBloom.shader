@@ -1,5 +1,6 @@
 Shader "Hidden/Shader/StreakBloom"
 {
+    // TODO finish this shader
     HLSLINCLUDE
 
     #pragma target 4.5
