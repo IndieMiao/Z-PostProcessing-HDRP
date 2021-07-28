@@ -56,7 +56,6 @@ public sealed class GrainyBlur : CustomPostProcessVolumeComponent, IPostProcessC
             HDUtils.BlitCameraTexture(cmd, source, rt, m_Material, 0);
             m_Material.SetTexture(ShaderIDs.BufferRT, rt);
             cmd.Blit(rt, destination, 0, 0);
-            // cmd.Blit(rt, (RenderTargetIdentifier)ShaderIDs.BufferRT, 0, 0);
             // HDUtils.DrawFullScreen(cmd, m_Material, destination);
         }
         else

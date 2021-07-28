@@ -46,16 +46,6 @@ Shader "Hidden/Shader/GrainyBlur"
 		return GrainyBlur(i);
 	}
 
-    // float4 CustomPostProcess(Varyings input) : SV_Target
-    // {
-    //     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-
-    //     uint2 positionSS = input.texcoord * _ScreenSize.xy;
-    //     float3 outColor = LOAD_TEXTURE2D_X(_InputTexture, positionSS).xyz;
-
-    //     return float4(outColor, 1);
-    // }
-
     ENDHLSL
 
     SubShader

@@ -2,8 +2,11 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using System;
+namespace ZPostHDRP
+{
 
-[Serializable, VolumeComponentMenu("Post-processing/Custom/IrisBlur")]
+
+[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Blur/IrisBlur")]
 public sealed class IrisBlur : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
@@ -40,4 +43,5 @@ public sealed class IrisBlur : CustomPostProcessVolumeComponent, IPostProcessCom
     {
         CoreUtils.Destroy(m_Material);
     }
+}
 }
