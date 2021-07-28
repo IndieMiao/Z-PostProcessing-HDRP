@@ -54,18 +54,7 @@ public sealed class GlitchRGBSplitV3 : CustomPostProcessVolumeComponent, IPostPr
         m_Material.SetVector(ShaderIDs.Params, new Vector3(intervalType.value == IntervalType.Random ? randomFrequency : frequency
              .value, Amount.value, Speed.value));
 
-        switch(SplitDirection.value)
-        {
-            case DirectionEX.Horizontal: 
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 0);
-                break;
-            case DirectionEX.Vertical:
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 1);
-                break;
-            case DirectionEX.Horizontal_Vertical:
-                HDUtils.DrawFullScreen(cmd, m_Material, destination,null, 2);
-                break;
-        }
+        HDUtils.DrawFullScreen(cmd, m_Material, destination,null, (int)SplitDirection.value);
     }
 
     public override void Cleanup()
