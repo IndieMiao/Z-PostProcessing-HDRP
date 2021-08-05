@@ -12,4 +12,5 @@ float remap(float inputValue, float oldmin, float oldmax, float outmin, float ou
 	return (outmax - outmin)*(clampValue - oldmin) + outmin;
 }
 
+
 #endif //  Z_UTILITY_LIBRARY
