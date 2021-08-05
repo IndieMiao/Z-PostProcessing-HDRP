@@ -3,23 +3,19 @@ using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering;
 
-class OutlineFullScreen : CustomPass
+class OutlineFullScreenV2 : CustomPass
 {
     public LayerMask outlineLayer = 0;
     [ColorUsage(false, true)]
-    public Color outlineColor = Color.red;
-    public float threshold = 0.1f;
+    public Color outlineColor = Color.black;
+    public float threshold = 1;
     [SerializeField, HideInInspector]
     Shader outlineFullscreenShader;
     Material outlineFullscreen;
     RTHandle outlineBuffer;
-    // It can be used to configure render targets and their clear state. Also to create temporary render target textures.
-    // When empty this render pass will render to the active camera render target.
-    // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
-    // The render pipeline will ensure target setup and clearing happens in an performance manner.
     protected override void Setup(ScriptableRenderContext renderContext, CommandBuffer cmd)
     {
-        outlineFullscreenShader = Shader.Find("Hidden/OutlineFullScreen");
+        outlineFullscreenShader = Shader.Find("Hidden/OutlineFullScreenV2");
         outlineFullscreen = CoreUtils.CreateEngineMaterial(outlineFullscreenShader);
 
         outlineBuffer = RTHandles.Alloc(Vector2.one,
