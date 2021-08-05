@@ -6,9 +6,11 @@ using UnityEngine.Experimental.Rendering;
 class OutlineFullScreenV2 : CustomPass
 {
     public LayerMask outlineLayer = 0;
-    [ColorUsage(false, true)]
+    // [ColorUsage(false, true)]
     public Color outlineColor = Color.black;
     public float threshold = 1;
+    [Range(1,10)]
+    public float outlineWidth = 1;
     [SerializeField, HideInInspector]
     Shader outlineFullscreenShader;
     Material outlineFullscreen;
@@ -37,6 +39,7 @@ class OutlineFullScreenV2 : CustomPass
         ctx.propertyBlock.SetColor("_OutlineColor", outlineColor);
         ctx.propertyBlock.SetTexture("_OutlineBuffer",outlineBuffer);
         ctx.propertyBlock.SetFloat("_Threshold",threshold);
+        ctx.propertyBlock.SetFloat("_OutlineWidth",outlineWidth);
 
         //进行渲染
         CoreUtils.SetRenderTarget(ctx.cmd, ctx.cameraColorBuffer,ClearFlag.None);
