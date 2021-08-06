@@ -6,7 +6,8 @@ using System;
 namespace ZPostHDRP
 {
 
-[Serializable, VolumeComponentMenu("ZPostProcessHDRP/Debug/DebugHilight")]
+
+    [Serializable, VolumeComponentMenu("ZPostProcessHDRP/Debug/DebugHilight")]
 public sealed class DebugHilight : CustomPostProcessVolumeComponent, IPostProcessComponent
 {
     [Tooltip("Controls the intensity of the effect.")]
@@ -23,6 +24,15 @@ public sealed class DebugHilight : CustomPostProcessVolumeComponent, IPostProces
     public override CustomPostProcessInjectionPoint injectionPoint => CustomPostProcessInjectionPoint.BeforePostProcess;
 
     const string kShaderName = "Hidden/Shader/DebugHilight";
+    
+    static class ShaderIDs
+    {
+        internal static readonly int Intensity = Shader.PropertyToID("_Intensity");
+        internal static readonly int ThreshHold = Shader.PropertyToID("_ThreshHold");
+        internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
+        internal static readonly int Size = Shader.PropertyToID("_Size");
+        internal static readonly int MinWeight = Shader.PropertyToID("_MinWeight");
+    }
 
     public override void Setup()
     {
@@ -37,11 +47,11 @@ public sealed class DebugHilight : CustomPostProcessVolumeComponent, IPostProces
         if (m_Material == null)
             return;
 
-        m_Material.SetFloat("_Intensity", intensity.value);
-        m_Material.SetFloat("_ThreshHold", threshHold.value);
-        m_Material.SetTexture("_InputTexture", source);
-        m_Material.SetFloat("_Size", size.value);
-        m_Material.SetFloat("_MinWeight", minWeight.value);
+        m_Material.SetFloat(ShaderIDs.Intensity, intensity.value);
+        m_Material.SetFloat(ShaderIDs.ThreshHold, threshHold.value);
+        m_Material.SetTexture(ShaderIDs.InputTexture, source);
+        m_Material.SetFloat(ShaderIDs.Size, size.value);
+        m_Material.SetFloat(ShaderIDs.MinWeight, minWeight.value);
         HDUtils.DrawFullScreen(cmd, m_Material, destination);
     }
 

@@ -21,7 +21,7 @@ Shader "Hidden/OutlineFullScreenV2"
     #define s225 0.3826834
 
     #define MAXSAMPLES 16
-    static float2 samplingPositions[MAXSAMPLES] = {
+    static float2 sampling_positions[MAXSAMPLES] = {
         float2( 1, 0 ),
         float2( -1, 0 ),
         float2( 0, 1 ),
@@ -70,7 +70,7 @@ Shader "Hidden/OutlineFullScreenV2"
             //对周围像素进行 比较
             for(int i=0; i<sample_count; i++)
             {
-                float2 uvN = (posInput.positionNDC.xy +  uv_offset_per_pixel* samplingPositions[i] *_OutlineWidth ) *_RTHandleScale.xy;
+                float2 uvN = (posInput.positionNDC.xy +  uv_offset_per_pixel* sampling_positions[i] *_OutlineWidth ) *_RTHandleScale.xy;
                 // float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i] *_OutlineWidth ;
                 float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_trilinear_repeat_sampler, uvN, 0);
 

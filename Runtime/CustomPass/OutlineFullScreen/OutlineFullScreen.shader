@@ -19,7 +19,7 @@ Shader "Hidden/OutlineFullScreen"
     #define s225 0.3826834
     #define MAXSAMPLES 8
 
-    static float2 samplingPositions[MAXSAMPLES] =
+    static float2 sampling_positions[MAXSAMPLES] =
     {
         float2( 1,  1),
         float2( 0,  1),
@@ -39,7 +39,7 @@ Shader "Hidden/OutlineFullScreen"
         PositionInputs posInput = GetPositionInput(varyings.positionCS.xy, _ScreenSize.zw, depth, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
 
         float4 color = float4(0.0, 0.0, 0.0, 0.0); // 初始化Color
-        float luminanceThreshold = max(0.000001, _Threshold * 0.01); //灰度阈值
+        const float luminanceThreshold = max(0.000001, _Threshold * 0.01); //灰度阈值
 
         // Load the camera color buffer at the mip 0 if we're not at the before rendering injection point
         // 给color 赋值
@@ -48,7 +48,7 @@ Shader "Hidden/OutlineFullScreen"
 
         // When sampling RTHandle texture, always use _RTHandleScale.xy to scale your UVs first.
         float2 uv = posInput.positionNDC.xy * _RTHandleScale.xy;
-        // s_linear_clamp_sampler 在 shaerVariables.hsls中进行了声明
+        // s_linear_clamp_sampler 在 shaderVariables.hsls中进行了声明
         float4 outline = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uv, 0);
         outline.a = 0;
 
@@ -58,7 +58,7 @@ Shader "Hidden/OutlineFullScreen"
             //对周围像素进行 比较
             for(int i=0; i<MAXSAMPLES; i++)
             {
-                float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i];
+                float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * sampling_positions[i];
                 float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uvN, 0);
 
                 //如果 相邻像素 >  阈值
@@ -72,9 +72,6 @@ Shader "Hidden/OutlineFullScreen"
                 }
             }
         }
-        // // Fade value allow you to increase the strength of the effect while the camera gets closer to the custom pass volume
-        // float f = 1 - abs(_FadeValue * 2 - 1);
-        // return float4(color.rgb + f, color.a);
         return outline;
     }
 

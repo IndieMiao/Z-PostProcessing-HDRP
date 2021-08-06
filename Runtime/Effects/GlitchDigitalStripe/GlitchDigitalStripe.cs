@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using System;
+using UnityEngine.Serialization;
+
 namespace ZPostHDRP
 {
 
@@ -23,10 +25,11 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
 
     public BoolParameter needStripColorAdjust = new BoolParameter (  false );
 
-    [ColorUsageAttribute(true, true)]
-    public ColorParameter StripColorAdjustColor = new ColorParameter ( new  Color(0.1f, 0.1f, 0.1f) );
+    [FormerlySerializedAs("StripColorAdjustColor")] [ColorUsageAttribute(true, true)]
+    public ColorParameter stripColorAdjustColor = new ColorParameter ( new  Color(0.1f, 0.1f, 0.1f) );
 
-    public ClampedFloatParameter StripColorAdjustIndensity = new ClampedFloatParameter (2f, 0, 10);
+    [FormerlySerializedAs("StripColorAdjustIndensity")] 
+    public ClampedFloatParameter stripColorAdjustIndensity = new ClampedFloatParameter (2f, 0, 10);
 
     public BoolParameter DebugNoise = new BoolParameter (false);
 
@@ -88,11 +91,12 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
     }
     static class ShaderIDs
     {
-        internal static readonly int indensity = Shader.PropertyToID("_Indensity");
-        internal static readonly int effectIntensity = Shader.PropertyToID("_EffectsIntensity");
-        internal static readonly int noiseTex = Shader.PropertyToID("_NoiseTex");
+        internal static readonly int Indensity = Shader.PropertyToID("_Indensity");
+        internal static readonly int EffectIntensity = Shader.PropertyToID("_EffectsIntensity");
+        internal static readonly int NoiseTex = Shader.PropertyToID("_NoiseTex");
         internal static readonly int StripColorAdjustColor = Shader.PropertyToID("_StripColorAdjustColor");
         internal static readonly int StripColorAdjustIndensity = Shader.PropertyToID("_StripColorAdjustIndensity");
+        internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
     }
     public override void Render(CommandBuffer cmd, HDCamera camera, RTHandle source, RTHandle destination)
     {
@@ -101,19 +105,19 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
 
         UpdateNoiseTexture(frequency.value, noiseTextureWidth.value,noiseTextureHeight.value, stripeLength.value);
 
-        m_Material.SetFloat(ShaderIDs.effectIntensity, effectIntensity.value);
+        m_Material.SetFloat(ShaderIDs.EffectIntensity, effectIntensity.value);
 
         if (_noiseTexture != null)
         {
-            m_Material.SetTexture(ShaderIDs.noiseTex, _noiseTexture);
+            m_Material.SetTexture(ShaderIDs.NoiseTex, _noiseTexture);
         }
         
 
         if (needStripColorAdjust.value == true)
         {
             m_Material.EnableKeyword("NEED_TRASH_FRAME");
-            m_Material.SetColor(ShaderIDs.StripColorAdjustColor, StripColorAdjustColor.value);
-            m_Material.SetFloat(ShaderIDs.StripColorAdjustIndensity, StripColorAdjustIndensity.value);
+            m_Material.SetColor(ShaderIDs.StripColorAdjustColor, stripColorAdjustColor.value);
+            m_Material.SetFloat(ShaderIDs.StripColorAdjustIndensity, stripColorAdjustIndensity.value);
         }
         else
         {
@@ -121,7 +125,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
         }
 
         // m_Material.SetFloat("_Intensity", effectIntensity.value);
-        m_Material.SetTexture("_InputTexture", source);
+        m_Material.SetTexture(ShaderIDs.InputTexture, source);
 
         if(DebugNoise.value)
         { HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1); }
