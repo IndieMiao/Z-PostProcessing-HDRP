@@ -127,10 +127,7 @@ public sealed class GlitchDigitalStripe : CustomPostProcessVolumeComponent, IPos
         // m_Material.SetFloat("_Intensity", effectIntensity.value);
         m_Material.SetTexture(ShaderIDs.InputTexture, source);
 
-        if(DebugNoise.value)
-        { HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 1); }
-        else
-        { HDUtils.DrawFullScreen(cmd, m_Material, destination, null, 0); }
+        HDUtils.DrawFullScreen(cmd, m_Material, destination, null, DebugNoise.value ? 1 : 0);
     }
 
     public override void Cleanup()
