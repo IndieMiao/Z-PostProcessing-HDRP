@@ -45,11 +45,11 @@ Shader "Hidden/OutlineFullScreenV2"
     float4 FullScreenPass(Varyings varyings) : SV_Target
     {
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(varyings);
-        float depth = LoadCameraDepth(varyings.positionCS.xy);
+        const float depth = LoadCameraDepth(varyings.positionCS.xy);
         PositionInputs posInput = GetPositionInput(varyings.positionCS.xy, _ScreenSize.zw, depth, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
 
         float4 color = float4(0.0, 0.0, 0.0, 0.0); // 初始化Color
-        float luminanceThreshold = max(0.000001, _Threshold * 0.01); //灰度阈值
+        const float luminanceThreshold = max(0.000001, _Threshold * 0.01); //灰度阈值
 
         // 给color 赋值
         if (_CustomPassInjectionPoint != CUSTOMPASSINJECTIONPOINT_BEFORE_RENDERING)
@@ -60,17 +60,17 @@ Shader "Hidden/OutlineFullScreenV2"
 
         float4 outline = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uv, 0);
         outline.a = 0;
-        float2 uvOffsetPerPixel = 1.0/_ScreenSize .xy;
+        const float2 uv_offset_per_pixel = 1.0/_ScreenSize .xy;
 
-        int sampleCount = min( 2 * pow(2, _SamplePrecision ), MAXSAMPLES ) ;
+        const int sample_count = min( 2 * pow(2, _SamplePrecision ), MAXSAMPLES ) ;
 
         //如果outline 小于阈值 则进行outline 的计算
         if(Luminance(outline.rgb)< luminanceThreshold)
         {
             //对周围像素进行 比较
-            for(int i=0; i<sampleCount; i++)
+            for(int i=0; i<sample_count; i++)
             {
-                float2 uvN = (posInput.positionNDC.xy +  uvOffsetPerPixel* samplingPositions[i] *_OutlineWidth ) *_RTHandleScale.xy;
+                float2 uvN = (posInput.positionNDC.xy +  uv_offset_per_pixel* samplingPositions[i] *_OutlineWidth ) *_RTHandleScale.xy;
                 // float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i] *_OutlineWidth ;
                 float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_trilinear_repeat_sampler, uvN, 0);
 
