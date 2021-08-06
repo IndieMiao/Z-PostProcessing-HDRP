@@ -13,6 +13,7 @@ Shader "Hidden/OutlineFullScreenV2"
     float4 _OutlineColor;
     float _Threshold;
     float _OutlineWidth;
+    int _SamplePrecision;
 
     #define v2 1.41421
     #define c45 0.707107
@@ -40,21 +41,6 @@ Shader "Hidden/OutlineFullScreenV2"
         float2( -s225, c225 ),
         float2( -s225, -c225 )
     };
-    // #define MAXSAMPLES 8
-
-    // static float2 samplingPositions[MAXSAMPLES] =
-    // {
-    //     float2( 1,  1),
-    //     float2( 0,  1),
-    //     float2(-1,  1),
-    //     float2(-1,  0),
-    //     float2(-1, -1),
-    //     float2( 0, -1),
-    //     float2( 1, -1),
-    //     float2( 1, 0),
-    // };
-
-    
 
     float4 FullScreenPass(Varyings varyings) : SV_Target
     {
@@ -65,7 +51,6 @@ Shader "Hidden/OutlineFullScreenV2"
         float4 color = float4(0.0, 0.0, 0.0, 0.0); // 初始化Color
         float luminanceThreshold = max(0.000001, _Threshold * 0.01); //灰度阈值
 
-        // Load the camera color buffer at the mip 0 if we're not at the before rendering injection point
         // 给color 赋值
         if (_CustomPassInjectionPoint != CUSTOMPASSINJECTIONPOINT_BEFORE_RENDERING)
             color = float4(CustomPassLoadCameraColor(varyings.positionCS.xy, 0), 1);
@@ -77,20 +62,18 @@ Shader "Hidden/OutlineFullScreenV2"
         outline.a = 0;
         float2 uvOffsetPerPixel = 1.0/_ScreenSize .xy;
 
+        int sampleCount = min( 2 * pow(2, _SamplePrecision ), MAXSAMPLES ) ;
+
         //如果outline 小于阈值 则进行outline 的计算
         if(Luminance(outline.rgb)< luminanceThreshold)
         {
             //对周围像素进行 比较
-            for(int i=0; i<MAXSAMPLES; i++)
+            for(int i=0; i<sampleCount; i++)
             {
-                // float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i];
-                float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i] *_OutlineWidth ;
-                // float4 neighbour =  SampleCustomColor( posInput.positionNDC + uvOffsetPerPixel * _OutlineWidth * samplingPositions[i] );
-                float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_linear_clamp_sampler, uvN, 0);
+                float2 uvN = (posInput.positionNDC.xy +  uvOffsetPerPixel* samplingPositions[i] *_OutlineWidth ) *_RTHandleScale.xy;
+                // float2 uvN = uv + _ScreenSize.zw * _RTHandleScale.xy * samplingPositions[i] *_OutlineWidth ;
+                float4 neighbour = SAMPLE_TEXTURE2D_X_LOD(_OutlineBuffer, s_trilinear_repeat_sampler, uvN, 0);
 
-                //如果 相邻像素 >  阈值
-                //输出颜色= outline 参数颜色
-                //输出alpha = 1
                 if (Luminance(neighbour) > luminanceThreshold)
                 {
                     outline.rgb = _OutlineColor.rgb;
@@ -99,9 +82,7 @@ Shader "Hidden/OutlineFullScreenV2"
                 }
             }
         }
-        // // Fade value allow you to increase the strength of the effect while the camera gets closer to the custom pass volume
-        // float f = 1 - abs(_FadeValue * 2 - 1);
-        // return float4(color.rgb + f, color.a);
+
         return outline;
     }
 
@@ -112,14 +93,9 @@ Shader "Hidden/OutlineFullScreenV2"
         Pass
         {
             Name "OutlineFullscreenV2 0"
-
-            ZWrite Off
-            ZTest Always
-            Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
-
+            ZWrite Off ZTest Always Blend SrcAlpha OneMinusSrcAlpha Cull Off
             HLSLPROGRAM
-                #pragma fragment FullScreenPass
+            #pragma fragment FullScreenPass
             ENDHLSL
         }
     }

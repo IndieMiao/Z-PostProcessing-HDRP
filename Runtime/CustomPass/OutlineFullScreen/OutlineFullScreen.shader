@@ -85,14 +85,9 @@ Shader "Hidden/OutlineFullScreen"
         Pass
         {
             Name "Custom Pass 0"
-
-            ZWrite Off
-            ZTest Always
-            Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
-
+            ZWrite Off ZTest Always Blend SrcAlpha OneMinusSrcAlpha Cull Off
             HLSLPROGRAM
-                #pragma fragment FullScreenPass
+            #pragma fragment FullScreenPass
             ENDHLSL
         }
     }

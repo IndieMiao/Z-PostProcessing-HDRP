@@ -9,7 +9,8 @@ class OutlineFullScreenV2 : CustomPass
     // [ColorUsage(false, true)]
     public Color outlineColor = Color.black;
     public float threshold = 1;
-    [Range(1,10)]
+    public int samplePrecision = 0;
+    [Range(1,50)]
     public float outlineWidth = 1;
     [SerializeField, HideInInspector]
     Shader outlineFullscreenShader;
@@ -28,6 +29,7 @@ class OutlineFullScreenV2 : CustomPass
 					name: "Outline Buffer");
     }
 
+
     protected override void Execute(CustomPassContext ctx)
     {
         //设置需要渲染的物体
@@ -40,6 +42,7 @@ class OutlineFullScreenV2 : CustomPass
         ctx.propertyBlock.SetTexture("_OutlineBuffer",outlineBuffer);
         ctx.propertyBlock.SetFloat("_Threshold",threshold);
         ctx.propertyBlock.SetFloat("_OutlineWidth",outlineWidth);
+        ctx.propertyBlock.SetInt("_SamplePrecision",samplePrecision);
 
         //进行渲染
         CoreUtils.SetRenderTarget(ctx.cmd, ctx.cameraColorBuffer,ClearFlag.None);
