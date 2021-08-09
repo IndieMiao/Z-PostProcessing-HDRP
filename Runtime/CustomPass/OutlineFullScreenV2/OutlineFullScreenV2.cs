@@ -8,11 +8,11 @@ namespace ZPostHDRP.CustomPass
     class OutlineFullScreenV2 : UnityEngine.Rendering.HighDefinition.CustomPass
     {
         public LayerMask OutlineLayer = 0;
-        public Color OutlineColor = Color.black;
+        public Color OutlineColor = Color.red;
         public float Threshold = 1;
-        public int SamplePrecision = 0;
+        public int SamplePrecision = 16;
         [Range(1,50)]
-        public float OutlineWidth = 1;
+        public float OutlineWidth = 3;
         [SerializeField, HideInInspector] private Shader outlineFullscreenShader;
         private Material outlineFullscreen;
         private RTHandle outlineBuffer;
