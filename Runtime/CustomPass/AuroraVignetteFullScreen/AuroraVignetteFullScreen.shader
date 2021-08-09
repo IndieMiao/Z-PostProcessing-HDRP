@@ -39,23 +39,31 @@ Shader "Hidden/AuroraVignetteFullScreen"
 	uniform half3 _ColorFactor;
 	uniform half _Fading;
 
-    float4 FullScreenPass(Varyings varyings) : SV_Target
+        float4 FullScreenPass(Varyings varyings) : SV_Target
     {
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(varyings);
-        float depth = LoadCameraDepth(varyings.positionCS.xy);
+        const float depth = LoadCameraDepth(varyings.positionCS.xy);
         PositionInputs posInput = GetPositionInput(varyings.positionCS.xy, _ScreenSize.zw, depth, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
-        float3 viewDirection = GetWorldSpaceNormalizeViewDir(posInput.positionWS);
+        // float3 viewDirection = GetWorldSpaceNormalizeViewDir(posInput.positionWS);
         float4 color = float4(0.0, 0.0, 0.0, 0.0);
-
+    
         // Load the camera color buffer at the mip 0 if we're not at the before rendering injection point
         if (_CustomPassInjectionPoint != CUSTOMPASSINJECTIONPOINT_BEFORE_RENDERING)
             color = float4(CustomPassLoadCameraColor(varyings.positionCS.xy, 0), 1);
-
-        // Add your custom pass code here
-
-        // Fade value allow you to increase the strength of the effect while the camera gets closer to the custom pass volume
-        float f = 1 - abs(_FadeValue * 2 - 1);
-        return float4(color.rgb + f, color.a);
+    	
+    	float2 uv = varyings.positionCS.xy / _ScreenSize.xy;
+        float2 uv0 = uv - float2(0.5 + 0.5 * sin(1.4 * 6.28 * uv.x + 2.8 * _TimeX), 0.5);
+        float3 wave = float3(0.5 * (cos(sqrt(dot(uv0, uv0)) * 5.6) + 1.0), cos(4.62 * dot(uv, uv) + _TimeX), cos(distance(uv, float2(1.6 * cos(_TimeX * 2.0), 1.0 * sin(_TimeX * 1.7))) * 1.3));
+        half waveFactor = dot(wave, _ColorFactor) / _ColorChange;
+        half vignetteIndensity = 1.0 - smoothstep(_VignetteArea, _VignetteArea - 0.05 - _VignetteSmoothness, length(float2(0.5, 0.5) - uv));
+        half3 AuroraColor = half3
+		(
+			_ColorFactor.r * 0.5 * (sin(1.28 * waveFactor + _TimeX * 3.45) + 1.0),
+			_ColorFactor.g * 0.5 * (sin(1.28 * waveFactor + _TimeX * 3.15) + 1.0),
+			_ColorFactor.b * 0.4 * (sin(1.28 * waveFactor + _TimeX * 1.26) + 1.0)
+		);
+        half3 finalColor = lerp(color.rgb, AuroraColor, vignetteIndensity * _Fading);
+		return half4(finalColor, 1.0);
     }
 
     ENDHLSL

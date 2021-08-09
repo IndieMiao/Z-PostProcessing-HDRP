@@ -11,21 +11,21 @@ namespace ZPostHDRP.CustomPass
         // When empty this render pass will render to the active camera render target.
         // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
         // The render pipeline will ensure target setup and clearing happens in an performance manner.
-        public ClampedFloatParameter VignetteArea = new ClampedFloatParameter(0.8f,0,1);
+        [Range(0, 1)] public float VignetteArea = 0.8f;
 
-        public ClampedFloatParameter VignetteSmoothness = new ClampedFloatParameter(0.5f, 0, 1);
+        [Range(0,1)] public float VignetteSmoothness = 0.5f;
 
-        public ClampedFloatParameter VignetteFading = new ClampedFloatParameter(1, 0, 1);
+        [Range(0, 1)] public float VignetteFading = 1;
 
-        public ClampedFloatParameter ColorChange = new ClampedFloatParameter(0.1f,0.1f,1) ;
+        [Range(0.1f, 1)] public float ColorChange = 0.1f;
 
-        public ClampedFloatParameter ColorFactorR = new ClampedFloatParameter(1, 0, 2);
+        [Range(0, 2)] public float ColorFactorR = 1;
 
-        public ClampedFloatParameter ColorFactorG = new ClampedFloatParameter(1, 0, 2);
+        [Range(0, 2)] public float ColorFactorG = 1;
 
-        public ClampedFloatParameter ColorFactorB = new ClampedFloatParameter(1, 0, 2);
+        [Range(0, 2)] public float ColorFactorB = 1;
 
-        public ClampedFloatParameter FlowSpeed = new ClampedFloatParameter(1, -2, 2);
+        [Range(-2,2)]public float FlowSpeed = 1; 
         
         [SerializeField, HideInInspector] private Shader fullscreenShader;
         
@@ -42,7 +42,7 @@ namespace ZPostHDRP.CustomPass
                 dimension: TextureXR.dimension,
                 colorFormat: GraphicsFormat.B10G11R11_UFloatPack32,
                 useDynamicScale: true,
-                name: "Outline Buffer");
+                name: "Aurora Buffer");
         }
 
         static class ShaderIDs
@@ -55,20 +55,22 @@ namespace ZPostHDRP.CustomPass
             internal static readonly int VignetteFading = Shader.PropertyToID("_Fading");
         }
 
-
         protected override void Execute(CustomPassContext ctx)
         {
-            timeX = Time.deltaTime;
+            CoreUtils.SetRenderTarget(ctx.cmd,fullscreenBuffer,ClearFlag.Color);
+            timeX += Time.deltaTime;
             if (timeX > 100)
             {
                 timeX = 0;
             }
-            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteArea, VignetteArea.value);
-            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteSmoothness, VignetteSmoothness.value);
-            ctx.propertyBlock.SetFloat(ShaderIDs.ColorChange, ColorChange.value * 10f);
-            ctx.propertyBlock.SetVector(ShaderIDs.ColorFactor, new Vector3(ColorFactorR.value, ColorFactorG.value, ColorFactorB.value));
-            ctx.propertyBlock.SetFloat(ShaderIDs.TimeX, timeX * FlowSpeed.value);
-            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteFading, VignetteFading.value); 
+            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteArea, VignetteArea);
+            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteSmoothness, VignetteSmoothness);
+            ctx.propertyBlock.SetFloat(ShaderIDs.ColorChange, ColorChange* 10f);
+            ctx.propertyBlock.SetVector(ShaderIDs.ColorFactor, new Vector3(ColorFactorR, ColorFactorG, ColorFactorB));
+            ctx.propertyBlock.SetFloat(ShaderIDs.TimeX, timeX * FlowSpeed);
+            ctx.propertyBlock.SetFloat(ShaderIDs.VignetteFading, VignetteFading); 
+            CoreUtils.SetRenderTarget(ctx.cmd, ctx.cameraColorBuffer,ClearFlag.None);
+            CoreUtils.DrawFullScreen(ctx.cmd,fullscreenMaterial,ctx.propertyBlock,shaderPassId:0);
         }
 
         protected override void Cleanup()
