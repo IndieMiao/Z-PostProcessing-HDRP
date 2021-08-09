@@ -31,6 +31,14 @@ Shader "Hidden/AuroraVignetteFullScreen"
     // There are also a lot of utility function you can use inside Common.hlsl and Color.hlsl,
     // you can check them out in the source code of the core SRP package.
 
+    uniform half _VignetteArea;
+	uniform half _VignetteSmoothness;
+	uniform half _ColorChange;
+	uniform half4 _Color;
+	uniform half _TimeX;
+	uniform half3 _ColorFactor;
+	uniform half _Fading;
+
     float4 FullScreenPass(Varyings varyings) : SV_Target
     {
         UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(varyings);
